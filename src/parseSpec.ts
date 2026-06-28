@@ -1,7 +1,8 @@
-export interface OpenAPISpec {
+﻿export interface OpenAPISpec {
   openapi: string;
   info: { title: string; version: string };
   paths: Record<string, Record<string, { operationId?: string; summary?: string }>>;
+  components?: { schemas?: Record<string, { type?: string; properties?: Record<string, { type?: string }> }> };
 }
 
 export function parseSpec(raw: string): OpenAPISpec {
@@ -15,8 +16,8 @@ export function parseSpec(raw: string): OpenAPISpec {
   return spec;
 }
 
-export function listOperations(spec: OpenAPISpec): Array<{ method: string; path: string; operationId: string }> {
-  const ops: Array<{ method: string; path: string; operationId: string }> = [];
+export function listOperations(spec: OpenAPISpec): Array<{ method: string; path: string; operationId: string; summary?: string }> {
+  const ops: Array<{ method: string; path: string; operationId: string; summary?: string }> = [];
   for (const [path, methods] of Object.entries(spec.paths)) {
     for (const [method, operation] of Object.entries(methods)) {
       if (method === "parameters") continue;
@@ -24,6 +25,7 @@ export function listOperations(spec: OpenAPISpec): Array<{ method: string; path:
         method: method.toUpperCase(),
         path,
         operationId: operation.operationId ?? `${method}${path.replace(/\//g, "_")}`,
+        summary: operation.summary,
       });
     }
   }
