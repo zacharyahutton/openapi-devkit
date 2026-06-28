@@ -1,0 +1,21 @@
+{
+  "name": "openapi-devkit",
+  "version": "0.1.0",
+  "description": "Portfolio demonstration — OpenAPI to TypeScript client codegen starter",
+  "type": "module",
+  "bin": {
+    "openapi-devkit": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js"
+  },
+  "keywords": ["openapi", "codegen", "typescript", "portfolio"],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
