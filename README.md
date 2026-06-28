@@ -86,6 +86,15 @@ generated/        Output directory (created by CLI)
 
 Supports the [OpenAPI DevKit case study](https://github.com/zacharyahutton/portfolio). The case study describes Zod validators, `$ref` resolution, and Postman collections; **this repository is the runnable starter** that honestly documents what is implemented today.
 
+## VS Code
+
+1. **File → Open Folder** and select this repository root.
+2. Install recommended extensions when prompted (Python or Node/Java packs).
+3. **Run and Debug** (`F5`): choose **npm run dev depending on the repo.
+4. **Terminal → Run Task**: `dev: uvicorn`, `npm: dev`, or `mvn: test`.
+
+Workspace settings live in `.vscode/` (`extensions.json`, `launch.json`, `tasks.json`, `settings.json`).
+
 ## Future improvements
 
 - Resolve `$ref` in `components.schemas`
